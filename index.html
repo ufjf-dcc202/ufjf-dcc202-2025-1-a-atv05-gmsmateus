@@ -17,14 +17,21 @@
             min-height: 25px;
         }
         .disco{
-           background: radial-gradient(circle at top,purple, pink);
+           background: transparent;
            width: 100%;
            aspect-ratio: 1 / 1;
            border: 1px solid purple;
+           border: 1px solid transparent;
            border-radius: 50%;
+        }
+
+        .disco[data-cor="branco"]{
+            background:radial-gradient(circle at top, purple, pink);
+            border: 1px solid white;
         }
         .disco[data-cor="preto"]{
             background: radial-gradient(circle at top, beige, pink);
+            border: 1px solid white;
         }
         .disco[data-posicao= "0"]{
             grid-column: 1;

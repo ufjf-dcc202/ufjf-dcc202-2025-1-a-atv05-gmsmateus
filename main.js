@@ -1,14 +1,29 @@
- const eh1=document.querySelector("h1");
-    eh1.textContent="Olá Mundo!";
+import { getTabuleiro, seleciona } from "./discos.js";
+
+const eh1=document.querySelector("h1");
+eh1.textContent="Olá Mundo!";
 
 const eTabuleiro= criaTabuleiro();
+atualizaTabuleiro();
 document.body.append(eTabuleiro);
-for(let i=0; i<7; i++)
-{
-    if(i===3) continue;
-    const disco1=criaDisco(i<3?"branco":"preto", i);
-    eTabuleiro.append(disco1);
 
+function atualizaTabuleiro(){
+    eTabuleiro.innerHTML= "";
+    for(let i=0; i<7; i++)
+    {
+        const tabuleiro = getTabuleiro();
+        const disco1=criaDisco(tabuleiro[i], i);
+        eTabuleiro.append(disco1);
+        disco1.addEventListener("click", cliqueDisco);
+    }
+}
+
+function cliqueDisco(evento){    
+    const posicao=Number(evento.target.dataset.posicao);
+    console.log("click na posição: "+posicao);
+
+    seleciona(posicao);
+    atualizaTabuleiro();
 }
 
 function criaDisco(cor, posicao){
