@@ -1,4 +1,4 @@
-import { getTabuleiro, seleciona } from "./discos.js";
+import { getTabuleiro, seleciona, getSelecionado} from "./discos.js";
 
 const eh1=document.querySelector("h1");
 eh1.textContent="Olá Mundo!";
@@ -15,6 +15,9 @@ function atualizaTabuleiro(){
         const disco1=criaDisco(tabuleiro[i], i);
         eTabuleiro.append(disco1);
         disco1.addEventListener("click", cliqueDisco);
+        if(i === getSelecionado()){
+            disco1.classList.add("selecionado");
+        }
     }
 }
 
